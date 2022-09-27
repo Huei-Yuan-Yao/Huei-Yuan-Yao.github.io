@@ -6,7 +6,16 @@
     <description>Recent content on Huei-Yuan Yao&#39;s personal website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huei-yuan-yao.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huei-yuan-yao.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Topics in Mathematical Statistics Note</title>
+      <link>https://huei-yuan-yao.github.io/post/2022-09-27-topics-in-mathematical-statistics-note/</link>
+      <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huei-yuan-yao.github.io/post/2022-09-27-topics-in-mathematical-statistics-note/</guid>
+      <description>This post is to record my deployment of my notes in topics in mathematical statistics. This note is built on Rbookdown, I am really appreciated all of the contributors to this package. This package and Rblogdown are both amazing and truly friendly to anyone who does not familiar with designing website like html, css, javascript just like me. The most appealing part (at least for me) is they incorporate the R markdown which is awesome for showing some data analysis work.</description>
+    </item>
+    
     <item>
       <title>Double Machine Learning</title>
       <link>https://huei-yuan-yao.github.io/post/2022-09-25-double-machine-learning/</link>
@@ -41,17 +50,6 @@
       
       <guid>https://huei-yuan-yao.github.io/contact/</guid>
       <description>The primary mail address I am using is aaa0971020256@gmail.com. My Facebook and Instagram accounts are also available on this website. Please tell me who you are if you would like to contact me and I do not know you.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>https://huei-yuan-yao.github.io/post/2020-12-01-r-rmarkdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      
-      <guid>https://huei-yuan-yao.github.io/post/2020-12-01-r-rmarkdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
   </channel>
