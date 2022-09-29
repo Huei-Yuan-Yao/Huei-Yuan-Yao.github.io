@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="a special proof a Von-Neumann minimax theorem">
+  <meta name="generator" content="Hugo 0.102.3" />
+
+  <title>A Proof of Von-Neumann&#39;s minimax theorem &middot; Huei-Yuan Yao&#39;s personal website</title>
+
+    
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://huei-yuan-yao.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://huei-yuan-yao.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://huei-yuan-yao.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" type="text/css">
+
+  
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/androidstudio.min.css">
+  <script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://huei-yuan-yao.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://huei-yuan-yao.github.io/">Huei-Yuan</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://huei-yuan-yao.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://huei-yuan-yao.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://huei-yuan-yao.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://huei-yuan-yao.github.io/contact/"><i class='fa fa-phone fa-fw'></i>Contact</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/jack.yao.16" rel="me" target="_blank"><i class="fab fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/member_yao/" rel="me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/Huei-Yuan-Yao" rel="me" target="_blank"><i class="fab fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>A Proof of Von-Neumann&#39;s minimax theorem</h1>
+  <h2>a special proof a Von-Neumann minimax theorem</h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>28 Sep 2022, 00:00</time>
+  </div>
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+</div>
+
+  
+
+
+<p>This post is to introduce a special proof of well known Von-Neumann’s minimax theorem. I mainly refer to the paper, <a href="https://dl.acm.org/doi/10.1145/238061.238163">Game Theory, On-line Prediction and Boosting</a> and the course website, <a href="https://bcourses.berkeley.edu/courses/1454200">Game Theory</a>. I think I will write at least two more posts about this paper. This first post is a summary of the description and proof of Von-Neumann’s minimax theorem.</p>
+<p>First we define a two-player zero-sum game as the following.</p>
+<div class="defintion" name="two-player zero-sum game">
+<p>A two-player zero-sum game includes</p>
+<ol style="list-style-type: decimal">
+<li>Player 1 (row player) has finite action set indexed by <span class="math inline">\(\{1,\cdots,m\}\)</span>.</li>
+<li>Player 2 (column player) has finite action set indexed by <span class="math inline">\(\{1,\cdots,n\}\)</span>.</li>
+<li>Payoff of player 1 is represented in a matrix <span class="math inline">\(A \in \mathbb{R}^{m\times n}\)</span> and also the loss of player 2 since it is zero-sum game.</li>
+<li><span class="math inline">\(a_{i,j}\)</span> represents the payoff of player 1 when player 1 plays <span class="math inline">\(i\)</span> and player 2 plays <span class="math inline">\(j\)</span>.</li>
+</ol>
+</div>
+<p>Also recall mixed strategy for row player:
+<span class="math display">\[x=(x_1,\cdots,x_m)^{T} \in \Delta_m=\{x\in \mathbb{R}^m, x_i \geq 0, \sum_i x_i=1\}.\]</span>
+Similarly we define the mixed strategy for column player denoted by <span class="math inline">\(y\in \Delta_n\)</span>. Clearly, the expected payoff is <span class="math inline">\(x^TAy=\sum_{i=1}^m\sum_{j=1}^n x_ia_{i,j}y_j\)</span>. A “safety strategy” for player 1 is a strategy <span class="math display">\[x^{\ast}= \underset{x\in \Delta_m}{\arg\max}\underset{y\in \Delta_n}{\min} x^TAy\]</span> which just maximizing the worst case expected payoff. The safety strategy for player 2 is <span class="math display">\[y^{\ast}= \underset{y\in \Delta_n}{\arg\min}\underset{x\in \Delta_m}{\max} x^TAy.\]</span> The theorem we would like to prove here tells us the minimax value and maximin value do agree in our scenario.</p>
+<p>Here we skip the classical method in solving such a game such as IESDS (Iterated Eliminate Strictly Domninated Strategy) and linear programming but focus on the statement and proof of Von-Neumann’s minimax theorem.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-1" class="theorem"><strong>Theorem 1  (Von-Neumann's minimax theorem) </strong></span>For any two-player zero-sum game with payoff matrix <span class="math inline">\(A \in \mathbb{R}^{m\times n}\)</span>,
+<span class="math display">\[V:=\underset{y\in \Delta_n}{\min}\underset{x\in \Delta_m}{\max} x^TAy=\underset{x\in \Delta_m}{\max}\underset{y\in \Delta_n}{\min} x^TAy,\]</span>
+where <span class="math inline">\(V\)</span> is called the “value” of such a game.</p>
+</div>
+<p>In fact, the strategy profile <span class="math inline">\((x^{\ast},y^{\ast})\)</span> is a Nash equilibrium. Because we have <span class="math display">\[{x^{\ast}}^TAy^{\ast} \geq \underset{y\in \Delta_n}{\min} {x^{\ast}}^TAy = \underset{x\in \Delta_m}{\max}\underset{y\in \Delta_n}{\min} x^TAy =V=\underset{y\in \Delta_n}{\min}\underset{x\in \Delta_m}{\max} x^TAy=\underset{x\in \Delta_m}{\max} x^TAy^{\ast} \geq {x^{\ast}}^TAy^{\ast}.\]</span> Intuitively speaking, there is no incentive for the two players to change their strategies when they both play the “optimal” (in the above sense) strategy.</p>
+<p>As a start of proof, we give a lemma about one direction of the inequality of the two values.</p>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-2" class="lemma"><strong>Lemma 1  </strong></span>Let X, Y are closed and bounded in <span class="math inline">\(\mathbb{R}^d\)</span> and <span class="math inline">\(f:X\times Y \to \mathbb{R}\)</span> is continuous. Then <span class="math display">\[\underset{y\in Y}{\min}\underset{x\in X}{\max} f(x,y)\geq \underset{x\in X}{\max}\underset{y\in Y}{\min} f(x,y).\]</span></p>
+</div>
+<p>An intuition for this lemma is to interpret the safety strategy into “sequential play”. Consider if row player play first and column player play with knowledge of row player, column player will choose to maximize the corresponding payoff, i.e. <span class="math inline">\(\underset{y\in Y}{\min} f(x,y)\)</span> regardless of what row player play. Thus the row player knowing this will play to maximize this value, i.e.  f(x,y). In other words, the maximin value can be thought as the payoff of such row player while symmetrically the minimax value is the payoff of the row player who play secondly. Therefore, the minimax value should be larger than the maximin value since the player with hindsight should take more advantage.</p>
+<p>With this lemma in hand, we only need to show another direction of the inequality in the following. A classical proof can be found in the <a href="https://www.amazon.com/Game-Theory-Alive-Anna-Karlin/dp/1470419823">textbook</a> which utilize the theory regarding separating hyperplane. The paper provides a very interesting proof which mainly consider “playing the game repeatedly”.</p>
+<p>Assume that payoff matrix probably unknown, and the row player play the game for <span class="math inline">\(T\)</span> rounds. At round <span class="math inline">\(t=1,\cdots, T\)</span>:</p>
+<ol style="list-style-type: decimal">
+<li>The row player play mixed strategy <span class="math inline">\(x_t\)</span>.</li>
+<li>The column player play mixed strategy <span class="math inline">\(y_t\)</span> with knowledge of <span class="math inline">\(x_t\)</span>.</li>
+<li>The learner can observe the payoff of each pure strategy (<span class="math inline">\(e_i\)</span>).</li>
+<li>The learner get payoff <span class="math inline">\(x_t^TAy_t\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+</ol>
+<p>We define the regret of the row player after <span class="math inline">\(T\)</span> rounds as <span class="math display">\[R_T=\underset{x\in \Delta_m}{\max}\sum_\limits{t=1}^{T} x^{T}Ay_t-\sum_\limits{t=1}^{T}x_t^{T}Ay_t.\]</span> The idea of the proof is to show that the existence of low regret algorithm implies the minimax theorem. The low regret here means <span class="math inline">\(R_T=o(T)\)</span>.</p>
+<div class="proof">
+<p><span id="unlabeled-div-3" class="proof"><em>Proof</em> (Von-Neumann's minimax theorem). </span>Assume we already have a low regret algorithm and the column player plays <span class="math inline">\(y_t=\underset{y\in \Delta_n}{\arg \min} x_t^TAy\)</span> (such player is called “adversarial”).</p>
+<p>Let <span class="math inline">\(\bar{x}=\frac{1}{T} \sum_\limits{t=1}^Tx_t\)</span> and <span class="math inline">\(\bar{y}=\frac{1}{T} \sum_\limits{t=1}^Ty_t\)</span>. Clearly, <span class="math inline">\(\bar{x} \in \Delta_m\)</span> and <span class="math inline">\(\bar{y} \in \Delta_n\)</span>. Then
+<span class="math display">\[
+\begin{split}
+\underset{x\in \Delta_m}{\max}\underset{y\in \Delta_n}{\min} x^TAy &amp;\geq \underset{y\in \Delta_n}{\min} \bar{x}^TAy\\
+&amp;=\underset{y\in \Delta_n}{\min} \frac{1}{T} \sum_\limits{t=1}^T x_t^TAy \\
+&amp;\geq \frac{1}{T} \sum_\limits{t=1}^T \underset{y\in \Delta_n}{\min} x_t^TAy \\
+&amp;= \frac{1}{T} \sum_\limits{t=1}^T  x_t^TAy_t \\
+&amp;= \underset{x\in \Delta_m}{\max}  \frac{1}{T} \sum_\limits{t=1}^T  x^TAy_t - \frac{R_T}{T} \qquad \mbox{by the definition of regret}\\
+&amp;= \underset{x\in \Delta_m}{\max}  x^TA\bar{y} - \frac{R_T}{T} \\
+&amp;\geq \underset{y\in \Delta_n}{\min}\underset{x\in \Delta_m}{\max}  x^TAy - \frac{R_T}{T}
+\end{split}
+\]</span>
+The result follows by letting <span class="math inline">\(T \to \infty\)</span>.</p>
+</div>
+<p>Here are some remarks:</p>
+<ol style="list-style-type: decimal">
+<li><p>To complete the proof, the rest work is to providing a low regret algorithm. In fact, there are some different algorithm, which are also related to the online learning literature, I may leave them in the following posts.</p></li>
+<li><p>The Von-Neumann’s minimax theorem can be generalized onto more general case which is called “Sion’s minimax theorem. A direct and realistic explanation for such generalzation could be that we may have more general payoff function (which actually should be convex-concave). The setup is associated with research domain known as”learning in games”.</p></li>
+</ol>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Readers may notice “loss” is considered in the protocol of the paper which clearly not affect the argument.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+  
+  <h4><i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Share!</h4>
+<ul class="share-buttons">
+	<li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhuei-yuan-yao.github.io%2fpost%2f2022-09-28-a-proof-of-von-neumann-s-minimax-theorem%2f" target="_blank" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span class="sr-only">Share on Facebook</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2fhuei-yuan-yao.github.io%2fpost%2f2022-09-28-a-proof-of-von-neumann-s-minimax-theorem%2f" target="_blank" title="Tweet"><i class="fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Tweet</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="https://plus.google.com/share?url=https%3a%2f%2fhuei-yuan-yao.github.io%2fpost%2f2022-09-28-a-proof-of-von-neumann-s-minimax-theorem%2f" target="_blank" title="Share on Google+"><i class="fab fa-google-plus" aria-hidden="true"></i><span class="sr-only">Share on Google+</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="http://www.tumblr.com/share?v=3&u=https%3a%2f%2fhuei-yuan-yao.github.io%2fpost%2f2022-09-28-a-proof-of-von-neumann-s-minimax-theorem%2f" target="_blank" title="Post to Tumblr"><i class="fab fa-tumblr" aria-hidden="true"></i><span class="sr-only">Post to Tumblr</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhuei-yuan-yao.github.io%2fpost%2f2022-09-28-a-proof-of-von-neumann-s-minimax-theorem%2f" target="_blank" title="Pin it"><i class="fab fa-pinterest-p" aria-hidden="true"></i><span class="sr-only">Pin it</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="http://www.reddit.com/submit?url=https%3a%2f%2fhuei-yuan-yao.github.io%2fpost%2f2022-09-28-a-proof-of-von-neumann-s-minimax-theorem%2f" target="_blank" title="Submit to Reddit"><i class="fab fa-reddit-alien" aria-hidden="true"></i><span class="sr-only">Submit to Reddit</span></a>
+	</li>
+</ul>
+
+
+<style>
+	ul.share-buttons{
+	  list-style: none;
+	  padding: 0;
+	}
+
+	ul.share-buttons li{
+	  display: inline;
+	}
+
+	ul.share-buttons .sr-only{
+	  position: absolute;
+	  clip: rect(1px 1px 1px 1px);
+	  clip: rect(1px, 1px, 1px, 1px);
+	  padding: 0;
+	  border: 0;
+	  height: 1px;
+	  width: 1px;
+	  overflow: hidden;
+	}
+</style>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://huei-yuan-yao.github.io/post/2022-09-27-topics-in-mathematical-statistics-note/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://huei-yuan-yao.github.io/post/2022-09-27-topics-in-mathematical-statistics-note/">Topics in Mathematical Statistics Note</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+  
+  
+  
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'Your Disqus shortname';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="https://huei-yuan-yao.github.io/js/ui.js"></script>
+<script src="https://huei-yuan-yao.github.io/js/menus.js"></script>
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=Your%20Google%20Analytics%20tracking%20ID"></script>
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'Your Google Analytics tracking ID');
+  }
+</script>
+
+
+
+
+
+
+<script src="https://huei-yuan-yao.github.io/js/math-code.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+</body>
+</html>
+

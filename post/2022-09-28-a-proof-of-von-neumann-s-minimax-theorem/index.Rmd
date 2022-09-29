@@ -1,0 +1,82 @@
+---
+title: A Proof of Von-Neumann's minimax theorem
+author: Huei-Yuan Yao
+date: '2022-09-28'
+slug: []
+categories: []
+tags: []
+description: 'a special proof a Von-Neumann minimax theorem'
+topics: []
+---
+This post is to introduce a special proof of well known Von-Neumann's minimax theorem. I mainly refer to the paper, [Game Theory, On-line Prediction and Boosting](https://dl.acm.org/doi/10.1145/238061.238163) and the course website, [Game Theory](https://bcourses.berkeley.edu/courses/1454200). I think I will write at least two more posts about this paper. This first post is a summary of the description and proof of Von-Neumann's minimax theorem. 
+
+First we define a two-player zero-sum game as the following.
+
+:::{.defintion name="two-player zero-sum game"}
+A two-player zero-sum game includes 
+
+1. Player 1 (row player) has finite action set indexed by $\{1,\cdots,m\}$.
+2. Player 2 (column player) has finite action set indexed by $\{1,\cdots,n\}$.
+3. Payoff of player 1 is represented in a matrix $A \in \mathbb{R}^{m\times n}$ and also the loss of player 2 since it is zero-sum game.
+4. $a_{i,j}$ represents the payoff of player 1 when player 1 plays $i$ and player 2 plays $j$.
+:::
+
+Also recall mixed strategy for row player:
+$$x=(x_1,\cdots,x_m)^{T} \in \Delta_m=\{x\in \mathbb{R}^m, x_i \geq 0, \sum_i x_i=1\}.$$
+Similarly we define the mixed strategy for column player denoted by $y\in \Delta_n$. Clearly, the expected payoff is $x^TAy=\sum_{i=1}^m\sum_{j=1}^n x_ia_{i,j}y_j$. A "safety strategy" for player 1 is a strategy $$x^{\ast}= \underset{x\in \Delta_m}{\arg\max}\underset{y\in \Delta_n}{\min} x^TAy$$ which just maximizing the worst case expected payoff. The safety strategy for player 2 is $$y^{\ast}= \underset{y\in \Delta_n}{\arg\min}\underset{x\in \Delta_m}{\max} x^TAy.$$ The theorem we would like to prove here tells us the minimax value and maximin value do agree in our scenario.
+
+Here we skip the classical method in solving such a game such as IESDS (Iterated Eliminate Strictly Domninated Strategy) and linear programming but focus on the statement and proof of Von-Neumann's minimax theorem. 
+
+:::{.theorem name="Von-Neumann's minimax theorem"}
+For any two-player zero-sum game with payoff matrix $A \in \mathbb{R}^{m\times n}$,
+$$V:=\underset{y\in \Delta_n}{\min}\underset{x\in \Delta_m}{\max} x^TAy=\underset{x\in \Delta_m}{\max}\underset{y\in \Delta_n}{\min} x^TAy,$$
+where $V$ is called the "value" of such a game.
+:::
+
+In fact, the strategy profile $(x^{\ast},y^{\ast})$ is a Nash equilibrium. Because we have $${x^{\ast}}^TAy^{\ast} \geq \underset{y\in \Delta_n}{\min} {x^{\ast}}^TAy = \underset{x\in \Delta_m}{\max}\underset{y\in \Delta_n}{\min} x^TAy =V=\underset{y\in \Delta_n}{\min}\underset{x\in \Delta_m}{\max} x^TAy=\underset{x\in \Delta_m}{\max} x^TAy^{\ast} \geq {x^{\ast}}^TAy^{\ast}.$$ Intuitively speaking, there is no incentive for the two players to change their strategies when they both play the "optimal" (in the above sense) strategy.
+
+As a start of proof, we give a lemma about one direction of the inequality of the two values.
+
+:::{.lemma}
+Let X, Y are closed and bounded in $\mathbb{R}^d$ and $f:X\times Y \to \mathbb{R}$ is continuous. Then $$\underset{y\in Y}{\min}\underset{x\in X}{\max} f(x,y)\geq \underset{x\in X}{\max}\underset{y\in Y}{\min} f(x,y).$$
+
+:::
+
+An intuition for this lemma is to interpret the safety strategy into "sequential play". Consider if row player play first and column player play with knowledge of row player, column player will choose to maximize the corresponding payoff, i.e. $\underset{y\in Y}{\min} f(x,y)$ regardless of what row player play. Thus the row player knowing this will play to maximize this value, i.e. \underset{x\in X}{\max}\underset{y\in Y}{\min} f(x,y). In other words, the maximin value can be thought as the payoff of such row player while symmetrically the minimax value is the payoff of the row player who play secondly. Therefore, the minimax value should be larger than the maximin value since the player with hindsight should take more advantage.
+
+With this lemma in hand, we only need to show another direction of the inequality in the following. A classical proof can be found in the [textbook](https://www.amazon.com/Game-Theory-Alive-Anna-Karlin/dp/1470419823) which utilize the theory regarding separating hyperplane. The paper provides a very interesting proof which mainly consider "playing the game repeatedly".
+
+Assume that payoff matrix probably unknown, and the row player play the game for $T$ rounds. At round $t=1,\cdots, T$:
+
+1. The row player play mixed strategy $x_t$.
+2. The column player play mixed strategy $y_t$ with knowledge of $x_t$.
+3. The learner can observe the payoff of each pure strategy ($e_i$).
+4. The learner get payoff $x_t^TAy_t$.^[Readers may notice "loss" is considered in the protocol of the paper which clearly not affect the argument.]
+
+We define the regret of the row player after $T$ rounds as $$R_T=\underset{x\in \Delta_m}{\max}\sum_\limits{t=1}^{T} x^{T}Ay_t-\sum_\limits{t=1}^{T}x_t^{T}Ay_t.$$ The idea of the proof is to show that the existence of low regret algorithm implies the minimax theorem. The low regret here means $R_T=o(T)$. 
+
+:::{.proof name="Von-Neumann's minimax theorem"} 
+Assume we already have a low regret algorithm and the column player plays $y_t=\underset{y\in \Delta_n}{\arg \min} x_t^TAy$ (such player is called "adversarial"). 
+
+Let $\bar{x}=\frac{1}{T} \sum_\limits{t=1}^Tx_t$ and $\bar{y}=\frac{1}{T} \sum_\limits{t=1}^Ty_t$. Clearly, $\bar{x} \in \Delta_m$ and $\bar{y} \in \Delta_n$. Then
+$$
+\begin{split}
+\underset{x\in \Delta_m}{\max}\underset{y\in \Delta_n}{\min} x^TAy &\geq \underset{y\in \Delta_n}{\min} \bar{x}^TAy\\
+&=\underset{y\in \Delta_n}{\min} \frac{1}{T} \sum_\limits{t=1}^T x_t^TAy \\
+&\geq \frac{1}{T} \sum_\limits{t=1}^T \underset{y\in \Delta_n}{\min} x_t^TAy \\
+&= \frac{1}{T} \sum_\limits{t=1}^T  x_t^TAy_t \\
+&= \underset{x\in \Delta_m}{\max}  \frac{1}{T} \sum_\limits{t=1}^T  x^TAy_t - \frac{R_T}{T} \qquad \mbox{by the definition of regret}\\
+&= \underset{x\in \Delta_m}{\max}  x^TA\bar{y} - \frac{R_T}{T} \\
+&\geq \underset{y\in \Delta_n}{\min}\underset{x\in \Delta_m}{\max}  x^TAy - \frac{R_T}{T}
+\end{split}
+$$
+The result follows by letting $T \to \infty$.
+
+:::
+
+Here are some remarks:
+
+1. To complete the proof, the rest work is to providing a low regret algorithm. In fact, there are some different algorithm, which are also related to the online learning literature, I may leave them in the following posts. 
+
+2. The Von-Neumann's minimax theorem can be generalized onto more general case which is called "Sion's minimax theorem. A direct and realistic explanation for such generalzation could be that we may have more general payoff function (which actually should be convex-concave). The setup is associated with research domain known as "learning in games".
+

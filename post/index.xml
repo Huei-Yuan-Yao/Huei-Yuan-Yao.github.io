@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Huei-Yuan Yao&#39;s personal website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huei-yuan-yao.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huei-yuan-yao.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Proof of Von-Neumann&#39;s minimax theorem</title>
+      <link>https://huei-yuan-yao.github.io/post/2022-09-28-a-proof-of-von-neumann-s-minimax-theorem/</link>
+      <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huei-yuan-yao.github.io/post/2022-09-28-a-proof-of-von-neumann-s-minimax-theorem/</guid>
+      <description>This post is to introduce a special proof of well known Von-Neumann’s minimax theorem. I mainly refer to the paper, Game Theory, On-line Prediction and Boosting and the course website, Game Theory. I think I will write at least two more posts about this paper. This first post is a summary of the description and proof of Von-Neumann’s minimax theorem.
+First we define a two-player zero-sum game as the following.</description>
+    </item>
+    
     <item>
       <title>Topics in Mathematical Statistics Note</title>
       <link>https://huei-yuan-yao.github.io/post/2022-09-27-topics-in-mathematical-statistics-note/</link>
